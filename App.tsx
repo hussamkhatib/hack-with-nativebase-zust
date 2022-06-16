@@ -7,8 +7,11 @@ import {
   NativeBaseProvider,
   extendTheme,
   Container,
+  Center,
+  StatusBar,
 } from "native-base";
 import NavBar from "./components/NavBar";
+import Main from "./components/Main";
 
 // Define the config
 const config = {
@@ -25,11 +28,15 @@ declare module "native-base" {
 export default function App() {
   return (
     <NativeBaseProvider>
+      <Center flex={1} px="3">
+        <StatusBar />
+      </Center>
       <Container
         _dark={{
           _web: {
             bg: "coolGray.700",
           },
+          bg: "coolGray.800",
         }}
         _light={{
           _web: {
@@ -40,6 +47,7 @@ export default function App() {
         height="full"
       >
         <NavBar />
+        <Main />
         <ToggleDarkMode />
       </Container>
     </NativeBaseProvider>
