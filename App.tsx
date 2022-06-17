@@ -1,25 +1,23 @@
 import React from "react";
 import {
-  Text,
-  HStack,
-  Switch,
   useColorMode,
   NativeBaseProvider,
   extendTheme,
   Container,
   Center,
   StatusBar,
+  SunIcon,
+  MoonIcon,
+  Button,
 } from "native-base";
 import NavBar from "./components/NavBar";
 import Main from "./components/Main";
 
-// Define the config
 const config = {
   useSystemColorMode: false,
   initialColorMode: "dark",
 };
 
-// extend the theme
 export const theme = extendTheme({ config });
 type MyThemeType = typeof theme;
 declare module "native-base" {
@@ -48,26 +46,39 @@ export default function App() {
       >
         <NavBar />
         <Main />
-        <ToggleDarkMode />
       </Container>
+      <ToggleDarkMode />
     </NativeBaseProvider>
   );
 }
 
-// Color Switch Component
 function ToggleDarkMode() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch
-        isChecked={colorMode === "light"}
-        onToggle={toggleColorMode}
-        aria-label={
-          colorMode === "light" ? "switch to dark mode" : "switch to light mode"
-        }
-      />
-      <Text>Light</Text>
-    </HStack>
+    <Button
+      zIndex={10}
+      borderWidth="1"
+      width="10"
+      p="2"
+      borderRadius="full"
+      position="absolute"
+      bottom={10}
+      right={10}
+      _dark={{
+        _pressed: {
+          bg: "coolGray.700",
+        },
+        borderColor: "coolGray.900",
+        bg: "coolGray.800",
+      }}
+      borderColor="violet.900"
+      bg="white"
+      _pressed={{
+        bg: "violet.200",
+      }}
+      onPress={() => toggleColorMode()}
+    >
+      {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+    </Button>
   );
 }
