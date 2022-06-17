@@ -3,7 +3,15 @@ import React, { FC } from "react";
 
 const Stats = () => {
   return (
-    <Flex justifyContent="center" direction="row" width="full" py="4">
+    <Flex
+      justifyContent="center"
+      direction="row"
+      width="full"
+      _web={{
+        py: "6",
+      }}
+      py="4"
+    >
       <Stat
         primary="$15303.00"
         secondary="Total Invested"

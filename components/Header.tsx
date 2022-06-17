@@ -23,7 +23,7 @@ const Header = () => {
     >
       <Flex direction="row" alignItems="center">
         <ArrowBackIcon
-          size="4"
+          size="3"
           _light={{
             _web: {
               color: "coolGray.800",
@@ -42,7 +42,7 @@ const Header = () => {
           }}
           color="coolGray.50"
           px="4"
-          size="md"
+          size="sm"
         >
           Mutual Fund Portfolio
         </Heading>
