@@ -1,6 +1,7 @@
-import { Box } from "native-base";
+import { Box, Heading, Hidden } from "native-base";
 import React from "react";
 import data from "../data";
+import Cards from "./Cards";
 import Header from "./Header";
 import Stats from "./Stats";
 import Table from "./Table";
@@ -30,7 +31,22 @@ const Main = () => {
       >
         <Box maxW="734" width="full" mx="auto">
           <Stats />
-          <Table data={data} columns={columns} />
+          <Hidden platform={["android", "ios"]}>
+            <Table data={data} columns={columns} />
+          </Hidden>
+          <Hidden platform={["web"]}>
+            <Box mx="4">
+              <Heading
+                py="2"
+                fontWeight={500}
+                color="coolGray.800"
+                _dark={{ color: "coolGray.50" }}
+              >
+                Portfolio Details
+              </Heading>
+              <Cards data={data} />
+            </Box>
+          </Hidden>
         </Box>
       </Box>
     </Box>
